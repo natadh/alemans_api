@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../includes/headers.php';
 
+// Get JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 $id = $data['id'] ?? null;
 
@@ -11,34 +12,35 @@ if (!$id) {
 }
 
 try {
-    /* Get images first */
-    $stmt = $pdo->prepare("SELECT images FROM journals WHERE id = ?");
+    // 1️⃣ Get image URL
+    $stmt = $pdo->prepare("SELECT image_url FROM journals WHERE id = ?");
     $stmt->execute([$id]);
-    $journal = $stmt->fetch();
+    $journal = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$journal) {
         http_response_code(404);
-        echo json_encode(["message" => "Not found"]);
+        echo json_encode(["message" => "Journal not found"]);
         exit;
     }
 
-    $images = json_decode($journal['images'], true) ?? [];
+    $imageUrl = $journal['image_url'];
 
-    /* Delete DB record */
+    // 2️⃣ Delete DB record
     $stmt = $pdo->prepare("DELETE FROM journals WHERE id = ?");
     $stmt->execute([$id]);
 
-    /* Delete files */
-    foreach ($images as $imagePath) {
-        $fullPath = __DIR__ . "/.." . $imagePath;
+    // 3️⃣ Delete local file if it exists
+    if ($imageUrl && str_starts_with($imageUrl, "/uploads/")) {
+        $fullPath = __DIR__ . "/.." . $imageUrl;
         if (file_exists($fullPath)) {
             unlink($fullPath);
         }
     }
 
+    // 4️⃣ Success response
     echo json_encode([
         "success" => true,
-        "message" => "Deleted successfully"
+        "message" => "Journal deleted successfully"
     ]);
 
 } catch (Exception $e) {

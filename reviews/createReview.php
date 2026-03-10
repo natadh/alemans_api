@@ -9,13 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $data = json_decode(file_get_contents("php://input"), true);
 
 $name = $data['name'] ?? '';
-$reviewText = $data['review'] ?? '';
+$age = isset($data['age']) ? intval($data['age']) : null;
+$destination = $data['destination'] ?? '';
+$comment = $data['comment'] ?? '';
 $rating = isset($data['rating']) ? floatval($data['rating']) : 5.0;
-$link = $data['link'] ?? '';
+$date = $data['date'] ?? null; // e.g., "January 2025"
 
-if (!$name || !$reviewText) {
+if (!$name || !$comment) {
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "Name and review are required"]);
+    echo json_encode(["success" => false, "message" => "Name and comment are required"]);
     exit;
 }
 
@@ -27,17 +29,21 @@ if ($rating < 0 || $rating > 5) {
 
 try {
     $stmt = $pdo->prepare("
-        INSERT INTO reviews (name, review, rating, link)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO reviews (name, age, rating, destination, comment, date, is_active)
+        VALUES (?, ?, ?, ?, ?, ?, 1)
     ");
 
-    $stmt->execute([$name, $reviewText, $rating, $link]);
+    $stmt->execute([$name, $age, $rating, $destination, $comment, $date]);
 
     echo json_encode([
         "success" => true,
-        "message" => "Review created"
+        "message" => "Review created (inactive by default)"
     ]);
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Failed to create review"]);
+    echo json_encode([
+        "success" => false,
+        "message" => "Failed to create review",
+        "error" => $e->getMessage()
+    ]);
 }

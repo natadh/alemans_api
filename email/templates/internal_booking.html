@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="color-scheme" content="light dark">
+      <meta name="supported-color-schemes" content="light dark">
+      <title>New Booking Request</title>
+      <style>
+         /* CLIENT RESETS */
+         body, table, td, a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+         table { border-collapse:collapse !important; }
+         body { margin:0 !important; padding:0 !important; width:100% !important; }
+         /* MOBILE */
+         @media screen and (max-width:600px){
+         .container { width:100% !important; }
+         .padding { padding:20px !important; }
+         .button a { width:100% !important; display:block !important; }
+         }
+         /* DARK MODE */
+         @media (prefers-color-scheme: dark) {
+         body, .email-bg { background:#0e0a0b !important; }
+         .card { background:#1b1314 !important; }
+         .section-light { background:#22191a !important; }
+         .text-main { color:#f5f3f2 !important; }
+         .text-muted { color:#cfc7c5 !important; }
+         .divider { background:#F5D547 !important; }
+         .btn-dark { background:#F5D547 !important; }
+         .btn-dark a { color:#1A0A0B !important; }
+         }
+      </style>
+   </head>
+   <body style="margin:0; padding:0; background:#f7f6f4;" class="email-bg">
+      <!-- PREHEADER -->
+      <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+         You have received a new booking request from your website.
+      </div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+         <tr>
+            <td align="center" style="padding:30px 15px;">
+               <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" class="container card" style="max-width:600px; width:100%; background:#ffffff;">
+                  <!-- HEADER -->
+                  <tr>
+                     <td align="center" style="padding:40px 30px 30px 30px; background:#1A0A0B;">
+                        <img src="https://alemansadventures.com/logo.jpeg" width="160" alt="Alemans Adventures Logo" style="display:block; margin:0 auto 20px auto;">
+                        <div class="divider" style="width:40px; height:2px; background:#F5D547; margin:0 auto 20px auto;"></div>
+                        <h1 style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:22px; letter-spacing:2px; text-transform:uppercase; color:#F5D547;">
+                           New Booking Request
+                        </h1>
+                        <p style="margin:10px 0 0 0; font-size:13px; color:#e7e2e1;" class="text-muted">
+                           Alemans Adventures Website
+                        </p>
+                     </td>
+                  </tr>
+                  <!-- BODY -->
+                  <tr>
+                     <td class="padding text-main" style="padding:40px 30px; font-family:Arial, Helvetica, sans-serif; color:#2b2b2b; font-size:15px; line-height:1.7;">
+                        <!-- ALERT -->
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:30px;">
+                           <tr>
+                              <td style="padding:15px 20px; border-left:4px solid #F5D547; background:#FBFAF8; font-size:14px; font-weight:bold;">
+                                 Action Required: New Customer Booking
+                              </td>
+                           </tr>
+                        </table>
+
+                        <!-- CUSTOMER INFO -->
+                        <h2 style="margin:0 0 20px 0; font-size:16px; letter-spacing:1px; text-transform:uppercase; color:#1A0A0B;" class="text-main">
+                           Customer Information
+                        </h2>
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;">
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a; width:120px;">Name:</td>
+                              <td style="padding:10px 0;">{{name}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Email:</td>
+                              <td style="padding:10px 0;">
+                                 <a href="mailto:{{email}}" style="color:#1A0A0B; font-weight:bold; text-decoration:none;" class="text-main">{{email}}</a>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Phone:</td>
+                              <td style="padding:10px 0;">{{phone}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Nationality:</td>
+                              <td style="padding:10px 0;">{{nationality}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">State:</td>
+                              <td style="padding:10px 0;">{{state}}</td>
+                           </tr>
+                        </table>
+
+                        <!-- BOOKING DETAILS -->
+                        <div class="divider" style="width:40px; height:2px; background:#F5D547; margin:40px 0 15px 0;"></div>
+                        <h2 style="margin:0 0 15px 0; font-size:16px; letter-spacing:1px; text-transform:uppercase; color:#1A0A0B;" class="text-main">
+                           Booking Details
+                        </h2>
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px; border:1px solid #F5D547;">
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Safari:</td>
+                              <td style="padding:10px 0;">{{safariTitle}} ({{safariId}})</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Arrival:</td>
+                              <td style="padding:10px 0;">{{arrivalDate}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Departure:</td>
+                              <td style="padding:10px 0;">{{departureDate}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Adults:</td>
+                              <td style="padding:10px 0;">{{adults}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Children:</td>
+                              <td style="padding:10px 0;">{{children}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Accommodation:</td>
+                              <td style="padding:10px 0;">{{accommodation}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Transport:</td>
+                              <td style="padding:10px 0;">{{transport}}</td>
+                           </tr>
+                           <tr>
+                              <td style="padding:10px 0; color:#8a8a8a;">Message:</td>
+                              <td style="padding:10px 0;">{{message}}</td>
+                           </tr>
+                        </table>
+
+                        <!-- IMAGES -->
+                        <div class="divider" style="width:40px; height:2px; background:#F5D547; margin:40px 0 15px 0;"></div>
+                        <h2 style="margin:0 0 15px 0; font-size:16px; letter-spacing:1px; text-transform:uppercase; color:#1A0A0B;" class="text-main">
+                           Safari Images
+                        </h2>
+                        <ul style="font-size:14px; padding-left:20px; margin:0;">
+                           {{images}}
+                        </ul>
+
+                        <!-- BUTTON -->
+                        <table role="presentation" align="center" cellpadding="0" cellspacing="0" style="margin-top:35px;" class="btn-dark">
+                           <tr>
+                              <td align="center" bgcolor="#1A0A0B" style="border-radius:4px;">
+                                 <a href="mailto:{{email}}?subject=Re: Booking - {{safariTitle}}"
+                                    style="display:inline-block; padding:16px 32px; font-size:14px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; text-decoration:none; color:#F5D547; min-width:220px;">
+                                 Reply to Customer
+                                 </a>
+                              </td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <!-- FOOTER -->
+                  <tr>
+                     <td style="padding:25px 30px; background:#F3F1EE; text-align:center; font-size:12px; color:#777;" class="text-muted">
+                        This email was sent from the <strong>Alemans Adventures</strong> website booking form.<br><br>
+                        Received on: <strong><?php echo date('F j, Y \a\t g:i A'); ?></strong>
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

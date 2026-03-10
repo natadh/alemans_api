@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Request Received - Alemans Adventures</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1A0A0B;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #340608;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .booking-details {
+            background-color: #FFFDF9;
+            border: 2px solid #F5D547;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .booking-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .booking-details td {
+            padding: 8px 0;
+            color: #1A0A0B;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #1A0A0B 0%, #340608 100%);
+            color: #F5D547;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 12px rgba(26, 10, 11, 0.3);
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Booking Request Received</h1>
+        <p>Hello {{name}},</p>
+
+        <p>Thank you for booking with <strong>Alemans Adventures</strong>! We have received your booking request and
+            our team will review it shortly.</p>
+
+        <div class="booking-details">
+            <h2>Booking Details</h2>
+            <table>
+                <tr>
+                    <td><strong>Safari:</strong></td>
+                    <td>{{safariTitle}} ({{safariId}})</td>
+                </tr>
+                <tr>
+                    <td><strong>Arrival Date:</strong></td>
+                    <td>{{arrivalDate}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Departure Date:</strong></td>
+                    <td>{{departureDate}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Adults:</strong></td>
+                    <td>{{adults}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Children:</strong></td>
+                    <td>{{children}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Accommodation:</strong></td>
+                    <td>{{accommodation}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Transport:</strong></td>
+                    <td>{{transport}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Message:</strong></td>
+                    <td>{{message}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>Our team will contact you within <strong>24-48 hours</strong> to confirm the booking and provide further
+            details. We're excited to help you plan an unforgettable adventure in East Africa!</p>
+
+        <a href="https://www.alemansadventures.com" class="cta-button">Explore Our Safaris</a>
+
+        <div class="footer">
+            <p>Alemans Adventures | Sagana, Kenya | P.O. BOX 63-10306</p>
+            <p>You're receiving this email because you submitted a booking request. This is an automated confirmation.</p>
+        </div>
+    </div>
+</body>
+
+</html>
